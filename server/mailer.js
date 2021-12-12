@@ -5,44 +5,42 @@ require('dotenv').config();
 const sgMail = require('@sendgrid/mail');
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-const sendMail = ({
-  name, email, message, res,
-}) => {
-  const msg = {
-    to: email,
-    from: 'kelvinesegbona@gmail.com',
-    subject: `New Mail from hire my service. Email: ${email}`,
-    text: message,
-  };
-  sgMail.send(msg, (err, result) => {
-    if (err) {
-      return res.status(200).send({
-        message: 'Message not Sent. something went wrong',
-        error: err.message,
-      });
-    }
-    return res.status(200).send({
-      message: `Message sent successfully. Thank you ${name} for reaching out.`,
-      result: result.message,
-    });
-  });
-};
+// const sendMail = ({
+//   name, email, message, res,
+// }) => {
+//   const msg = {
+//     to: email,
+//     from: 'kelvinesegbona@gmail.com',
+//     subject: `New Mail from hire my service. Email: ${email}`,
+//     text: message,
+//   };
+//   sgMail.send(msg, (err, result) => {
+//     if (err) {
+//       return res.status(200).send({
+//         message: 'Message not Sent. something went wrong',
+//         error: err.message,
+//       });
+//     }
+//     return res.status(200).send({
+//       message: `Message sent successfully. Thank you ${name} for reaching out.`,
+//       result: result.message,
+//     });
+//   });
+// };
 
 const emailSender = ({
-  name, email, message, personal,
+  name, email, message, personal, userEmail,
 }) => new Promise((res, rej) => {
   const msg = {
     to: email,
     from: 'kelvinesegbona@gmail.com',
-    subject: personal ? 'Hire-my-service portfolio' : 'Kelvin From Hire-my-service',
+    subject: personal ? `${name} - Hire-my-service portfolio` : 'Kelvin From Hire-my-service',
     text: personal ? `
-    Mail from ${email}
+    Mail from ${name} with ${userEmail}
     ${message}
     ` : message,
   };
-  console.log('====================================');
-  console.log(msg);
-  console.log('====================================');
+  console.log({ msg });
   sgMail.send(msg, (err, result) => {
     if (err) {
       return rej({
@@ -88,6 +86,7 @@ const mailer = async (req, res) => {
       email: 'kevoesegbona@gmail.com',
       message,
       personal: true,
+      userEmail: email,
     });
 
     const output = await emailSender({
