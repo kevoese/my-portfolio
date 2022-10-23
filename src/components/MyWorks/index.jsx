@@ -1,7 +1,59 @@
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import './MyWorks.scss';
 import SliderMenu from 'react-slider-menu-package';
 import ProjectDiv from './ProjectDiv';
+
+const projects = [
+  {
+    link: 'https://paymentgateway.accessbankplc.com/#/',
+    img: 'https://ucarecdn.com/ac3ed5f8-7312-49df-813e-b105f146e280/accessgateway_app.png',
+  },
+  {
+    link: 'https://payfi.ng',
+    img: 'https://ucarecdn.com/f22b075a-5dd8-4335-b078-1ab4b0ba75b6/payfi_web_app.png',
+  },
+  {
+    link: 'https://customer-staging.payfi.ng',
+    img: 'https://ucarecdn.com/9d46af11-2526-49fd-a9d0-cb8e7393ca90/payfi_customer_app.png',
+  },
+  {
+    link: 'https://merchant.payfi.ng',
+    img: 'https://ucarecdn.com/cfc7157d-e1cf-4a94-a3c9-790a20d3b301/payfi_merchant_app.png',
+  },
+  {
+    link: 'https://admin.payfi.ng',
+    img: 'https://ucarecdn.com/fd74b7c9-fc7a-45e9-b1eb-e015a2868e98/payfi_admin_app.png',
+  },
+  {
+    link: 'https://nn-ship-maintenance.herokuapp.com/#/',
+    img: 'https://ucarecdn.com/fc4da3d2-7cdd-4382-a1b0-96229a62cd3d/nns_app.png',
+  },
+  {
+    link: 'https://dhml-frontend.herokuapp.com/',
+    img: 'https://ucarecdn.com/482d2cd3-ebe7-4bbe-be24-0848b853493e/dhml_app.png',
+  },
+  {
+    link: 'https://accessafrica.de/de/',
+    img: 'https://ucarecdn.com/7dc56c86-feb3-403a-b933-a68607c93f03/access_africa.png',
+  },
+  {
+    link: 'https://subtropicolimited.co.za/en/',
+    img: 'https://ucarecdn.com/cc48c446-6416-43ea-9f75-2de2a032ff87/subtropical.png',
+  },
+  {
+    link: 'https://ithrive.school/',
+    img: 'https://ucarecdn.com/2aac4392-5239-4709-82b7-6295d63fa8da/thrive.png',
+  },
+  {
+    link: 'https://cardinal.preparing.live/',
+    img: 'https://ucarecdn.com/45f6d242-28af-44d7-9a77-0590e6bc9333/cardinal_app.png',
+  },
+  {
+    link: 'https://business.woven.finance/login',
+    img: 'https://ucarecdn.com/ca4fadc5-29d9-4f80-b45e-1f039fbc4499/woven_app.png',
+  },
+];
 
 const MyWorks = () => (
   <div className="my-works" id="myworks">
@@ -13,44 +65,17 @@ const MyWorks = () => (
         height={250}
         sliderTransition={1.5}
         autoModeDelayTime={15}
-        elementsMinWidth={350}
+        elementsMinWidth={380}
       >
-        <ProjectDiv
-          appLink="https://paymentgateway.accessbankplc.com/#/"
-          imgLink="https://res.cloudinary.com/dflmq4zxb/image/upload/v1621627721/Screen_Shot_2021-05-21_at_8.30.00_PM_tiubjw.png"
-        />
-        <ProjectDiv
-          appLink="https://nn-ship-maintenance.herokuapp.com/#/"
-          imgLink="https://res.cloudinary.com/dflmq4zxb/image/upload/v1621629452/Screen_Shot_2021-05-21_at_9.39.27_PM_hqtq2u.png"
-        />
-        <ProjectDiv
-          appLink="https://payfi.ng/#/"
-          imgLink="https://res.cloudinary.com/dflmq4zxb/image/upload/v1621628629/Screen_Shot_2021-05-21_at_9.16.59_PM_psf3oy.png"
-        />
-        <ProjectDiv
-          appLink="http://dhml-staging.herokuapp.com/#/"
-          imgLink="https://res.cloudinary.com/dflmq4zxb/image/upload/v1621628627/Screen_Shot_2021-05-21_at_9.23.48_PM_u4oxce.png"
-        />
-        <ProjectDiv
-          appLink="https://demeter-ah-frontend-staging.herokuapp.com/"
-          imgLink="https://res.cloudinary.com/dflmq4zxb/image/upload/v1572108439/Screen_Shot_2019-10-25_at_10.33.32_AM_o7vila.png"
-        />
-        <ProjectDiv
-          appLink="https://payfi.netlify.app/#/register/verify-email"
-          imgLink="https://res.cloudinary.com/dflmq4zxb/image/upload/v1621628458/Screen_Shot_2021-05-21_at_9.21.42_PM_i7rmat.png"
-        />
-        <ProjectDiv
-          imgLink="https://res.cloudinary.com/dflmq4zxb/image/upload/v1621628629/Screen_Shot_2021-05-21_at_9.24.31_PM_einydk.png"
-          appLink="https://payfi-merchant-web.herokuapp.com/"
-        />
-        <ProjectDiv
-          appLink="https://lyrics-app-react.herokuapp.com/"
-          imgLink="https://res.cloudinary.com/dflmq4zxb/image/upload/v1572110588/Screen_Shot_2019-10-26_at_6.22.22_PM_v4txrg.png"
-        />
-        <ProjectDiv
-          appLink="https://hire-my-services.herokuapp.com/"
-          imgLink="https://res.cloudinary.com/dflmq4zxb/image/upload/v1621629162/Screen_Shot_2021-05-21_at_9.34.33_PM_rxiqqe.png"
-        />
+        {
+          projects.map((project, index) => (
+            <ProjectDiv
+              key={index}
+              appLink={project.link}
+              imgLink={project.img}
+            />
+          ))
+        }
       </SliderMenu>
     </div>
   </div>
