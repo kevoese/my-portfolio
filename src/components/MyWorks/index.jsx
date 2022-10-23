@@ -14,6 +14,14 @@ const projects = [
     img: 'https://ucarecdn.com/f22b075a-5dd8-4335-b078-1ab4b0ba75b6/payfi_web_app.png',
   },
   {
+    link: 'https://www.npmjs.com/package/react-typewriter-effect',
+    img: 'https://ucarecdn.com/45fda402-d593-49b7-baae-4939158b2ec3/progressbar_package.png',
+  },
+  {
+    link: 'https://www.npmjs.com/package/react-animated-progress-bar',
+    img: 'https://ucarecdn.com/45fda402-d593-49b7-baae-4939158b2ec3/progressbar_package.png',
+  },
+  {
     link: 'https://customer-staging.payfi.ng',
     img: 'https://ucarecdn.com/9d46af11-2526-49fd-a9d0-cb8e7393ca90/payfi_customer_app.png',
   },
@@ -65,7 +73,7 @@ const MyWorks = () => (
         height={250}
         sliderTransition={1.5}
         autoModeDelayTime={15}
-        elementsMinWidth={380}
+        elementsMinWidth={350}
       >
         {
           projects.map((project, index) => (
